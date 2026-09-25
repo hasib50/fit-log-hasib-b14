@@ -72,14 +72,10 @@ export default function PlanCard({
   onRemove,
 }: PlanCardProps) {
   return (
-    <div className="flex min-h-[114px] items-center rounded-[15px] border border-[#282d35] bg-[#12151a] px-4 py-3.5">
-
-{/* Left s*/}
-
-      <div className="flex min-w-0 flex-1 items-center gap-4">
-{/* Thumbnail */}
-
-        <div className="h-[80px] w-[144px] shrink-0 overflow-hidden rounded-[9px] bg-[#1b1e24]">
+    <div className="flex min-w-0 flex-col gap-4 rounded-[15px] border border-[#282d35] bg-[#12151a] p-3 sm:min-h-[114px] sm:flex-row sm:items-center sm:px-4 sm:py-3.5">
+      {/* Image + Workout Info */}
+      <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+        <div className="h-[72px] w-[110px] shrink-0 overflow-hidden rounded-[9px] bg-[#1b1e24] sm:h-[80px] sm:w-[144px]">
           <img
             src={workout.image}
             alt={workout.name}
@@ -87,47 +83,45 @@ export default function PlanCard({
           />
         </div>
 
-{/* Info */}
-        <div className="min-w-0">
-          <h3 className="truncate text-[16px] font-black uppercase leading-none tracking-[-0.3px] text-white">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-oswald truncate text-[15px] font-bold uppercase leading-none tracking-[-0.2px] text-white sm:text-[16px]">
             {workout.name}
           </h3>
 
-          <p className="mt-1.5 truncate text-[11px] text-[#858b95]">
+          <p className="font-inter mt-1.5 truncate text-[10px] text-[#858b95] sm:text-[11px]">
             {workout.equipment}
           </p>
 
-          <div className="mt-2.5 flex items-center gap-3 text-[11px] text-[#a2a7af]">
+          <div className="font-inter mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-[#a2a7af] sm:text-[11px]">
             <span className="flex items-center gap-1.5">
               <span className="text-[#c8ff00]">
                 <ClockIcon />
               </span>
-              {workout.duration} min
+              <span>{workout.duration} min</span>
             </span>
 
             <span className="flex items-center gap-1.5">
               <span className="text-[#c8ff00]">
                 <FlameIcon />
               </span>
-              {workout.caloriesBurned} kcal
+              <span>{workout.caloriesBurned} kcal</span>
             </span>
 
             <span className="flex items-center gap-1.5">
               <span className="text-[#c8ff00]">
                 <StarIcon />
               </span>
-              {workout.rating}
+              <span>{workout.rating}</span>
             </span>
           </div>
         </div>
       </div>
 
-{/* Right actions */}
-
-      <div className="ml-5 flex shrink-0 items-center gap-3">
+      {/* Actions */}
+      <div className="grid w-full grid-cols-[1fr_1fr_30px] items-center gap-2 sm:ml-5 sm:flex sm:w-auto sm:shrink-0 sm:gap-3">
         <Link
           href={`/workout/${workout.id}`}
-          className="flex h-[35px] items-center justify-center rounded-full border border-[#39404a] px-5 text-[11px] font-medium text-[#d0d3d8] transition hover:border-[#c8ff00] hover:text-white"
+          className="flex h-[35px] items-center justify-center rounded-full border border-[#39404a] px-2 text-[10px] font-medium text-[#d0d3d8] transition hover:border-[#c8ff00] hover:text-white sm:px-5 sm:text-[11px]"
         >
           View Details
         </Link>
@@ -135,17 +129,17 @@ export default function PlanCard({
         {onDone && (
           <button
             onClick={onDone}
-            className="flex h-[35px] items-center justify-center gap-2 rounded-full bg-[#c8ff00] px-5 text-[11px] font-bold text-black transition hover:bg-[#b9ed00]"
+            className="flex h-[35px] items-center justify-center gap-1.5 rounded-full bg-[#c8ff00] px-2 text-[10px] font-bold text-black transition hover:bg-[#b9ed00] sm:gap-2 sm:px-5 sm:text-[11px]"
           >
             <CheckIcon />
-            Mark as Done
+            <span>Mark as Done</span>
           </button>
         )}
 
         {onRemove && (
           <button
             onClick={onRemove}
-            className="flex h-[35px] w-[28px] items-center justify-center text-[18px] text-[#656b75] transition hover:text-white"
+            className="flex h-[35px] w-[30px] items-center justify-center text-[18px] text-[#656b75] transition hover:text-white"
             aria-label={`Remove ${workout.name}`}
           >
             ×
