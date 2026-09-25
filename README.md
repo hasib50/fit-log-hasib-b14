@@ -1,3 +1,6 @@
+# Project link 
+https://fit-log-hasib-b14.vercel.app/
+
 # FitLog — Workout Library
 
 FitLog is a workout library web application where users can explore exercises, view workout details, create a daily workout plan, and save workouts for later. The application is designed with a simple dark interface and a responsive layout for different screen sizes.
