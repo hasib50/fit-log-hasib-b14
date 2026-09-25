@@ -11,36 +11,31 @@ interface WorkoutDetailsProps {
 export default function WorkoutDetails({
   workout,
 }: WorkoutDetailsProps) {
- const { plan, addToPlan, saveWorkout } = useFitLog();
+  const { addToPlan, saveWorkout } = useFitLog();
 
-const isPlanFull = plan.length >= 5;
-const alreadyAdded = plan.some((item) => item.id === workout.id);
+  function handleAddToPlan() {
+    const result = addToPlan(workout);
 
- function handleAddToPlan() {
-  const result = addToPlan(workout);
-
-  if (result === "Added to today's plan.") {
-    toast.success(result);
-  } else {
-    toast.info(result);
+    if (result === "Added to today's plan.") {
+      toast.success(result);
+    } else {
+      toast.error(result);
+    }
   }
-}
 
-function handleSave() {
-  const result = saveWorkout(workout);
+  function handleSave() {
+    const result = saveWorkout(workout);
 
-  if (result === "Saved for later.") {
-    toast.success(result);
-  } else {
-    toast.info(result);
+    if (result === "Saved for later.") {
+      toast.success(result);
+    } else {
+      toast.info(result);
+    }
   }
-}
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-      
-{/* Image */}
-
+      {/* Image */}
       <div className="overflow-hidden rounded-xl border border-[#272b32] bg-[#15181e]">
         <img
           src={workout.image}
@@ -52,7 +47,6 @@ function handleSave() {
 {/* Content */}
 
       <div className="flex flex-col justify-center">
-
 {/* Title */}
 
         <h1 className="font-oswald mt-5 text-4xl font-black uppercase leading-[0.95] tracking-[-1px] text-white sm:text-5xl">
@@ -124,14 +118,9 @@ function handleSave() {
 
         <div className="font-inter mt-7 flex items-center gap-3">
           <button
-  onClick={handleAddToPlan}
-  disabled={isPlanFull || alreadyAdded}
-  className={`inline-flex h-[36px] items-center justify-center gap-2 rounded-[9px] px-4 text-[11px] font-bold transition ${
-    isPlanFull || alreadyAdded
-      ? "cursor-not-allowed bg-[#343941] text-[#777d86]"
-      : "bg-[#c8ff00] text-black hover:bg-[#b9ed00]"
-  }`}
->
+            onClick={handleAddToPlan}
+            className="inline-flex h-[36px] items-center justify-center gap-2 rounded-[9px] bg-[#c8ff00] px-4 text-[11px] font-bold text-black transition hover:bg-[#b9ed00]"
+          >
             <svg
               width="13"
               height="13"

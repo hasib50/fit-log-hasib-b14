@@ -40,22 +40,22 @@ export function FitLogProvider({
     setSaved(getSaved());
   }, []);
 
-  function addToPlan(workout: Workout) {
-    if (plan.some((item) => item.id === workout.id)) {
-      return "Already in today's plan.";
-    }
-
-    if (plan.length >= 5) {
-      return "Today's plan is full.";
-    }
-
-    const updatedPlan = [...plan, workout];
-
-    setPlan(updatedPlan);
-    savePlan(updatedPlan);
-
-    return "Added to today's plan.";
+ function addToPlan(workout: Workout) {
+  if (plan.some((item) => item.id === workout.id)) {
+    return "Already in today's plan.";
   }
+
+  if (plan.length >= 5) {
+    return "Today's plan is full.";
+  }
+
+  const updatedPlan = [...plan, workout];
+
+  setPlan(updatedPlan);
+  savePlan(updatedPlan);
+
+  return "Added to today's plan.";
+}
 
   function saveWorkout(workout: Workout) {
     if (saved.some((item) => item.id === workout.id)) {
