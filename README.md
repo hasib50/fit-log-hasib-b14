@@ -24,3 +24,5 @@ FitLog is a workout library web application where users can explore exercises, v
 - Responsive design for desktop, tablet, and mobile devices
 - Store workout plans and saved workouts using local storage
 - Custom loading state and 404 page
+
+--
